@@ -1,0 +1,1 @@
+ALTER TABLE public.tb_journal_lines ADD CONSTRAINT fkf5oxkijvs0c1enc08limwgcye FOREIGN KEY (journal_id) REFERENCES tb_journal_entries(journal_id);

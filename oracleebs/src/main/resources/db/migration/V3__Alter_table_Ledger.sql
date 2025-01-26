@@ -1,0 +1,1 @@
+ALTER TABLE public.tb_ledger ADD CONSTRAINT fkrhmpubthkyow2dmvfq2c4w2un FOREIGN KEY (journal_id) REFERENCES tb_journal_entries(journal_id);
