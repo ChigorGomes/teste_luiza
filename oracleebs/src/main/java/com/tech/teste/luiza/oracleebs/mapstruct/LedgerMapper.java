@@ -6,13 +6,7 @@ import com.tech.teste.luiza.oracleebs.model.Ledger;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface LedgerRequestMapper {
-
-
+public interface LedgerMapper {
     Ledger toEntity(LedgerRequestRecord ledgerRequestRecord);
     LedgerResponseRecord toResponseRecord(Ledger ledger);
-
-//    LedgerRequestRecord toLedgerRequestRecord(LedgerResponseRecord ledgerResponseRecord);
-
-
 }

@@ -2,7 +2,7 @@ package com.tech.teste.luiza.oracleebs.controller;
 
 import com.tech.teste.luiza.oracleebs.dto.request.LedgerRequestRecord;
 import com.tech.teste.luiza.oracleebs.dto.response.LedgerResponseRecord;
-import com.tech.teste.luiza.oracleebs.service.LedgerService;
+import com.tech.teste.luiza.oracleebs.service.LedgerServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,22 +18,22 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/v1/ledger")
 public class LedgerController {
-    private final LedgerService ledgerService;
+    private final LedgerServiceImpl ledgerServiceImpl;
 
-    public LedgerController(LedgerService ledgerService) {
-        this.ledgerService = ledgerService;
+    public LedgerController(LedgerServiceImpl ledgerServiceImpl) {
+        this.ledgerServiceImpl = ledgerServiceImpl;
     }
 
 
-    @PostMapping("/create")
+    @PostMapping()
     public ResponseEntity<LedgerResponseRecord> createLedger(@Valid @RequestBody LedgerRequestRecord ledger) {
-        var entity = ledgerService.create(ledger);
+        var entity = ledgerServiceImpl.create(ledger);
         return ResponseEntity.status(HttpStatus.CREATED).body(entity);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<LedgerResponseRecord> getLedger(@PathVariable UUID id) {
-        var entity = ledgerService.findById(id);
+        var entity = ledgerServiceImpl.findById(id);
         return ResponseEntity.ok().body(entity);
     }
 

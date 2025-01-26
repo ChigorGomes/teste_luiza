@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @ControllerAdvice
 public class CustomHandlerException {
@@ -33,7 +32,7 @@ public class CustomHandlerException {
         var error = ex.getBindingResult().getAllErrors().stream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage).toList();
 
-        CustomError customError= new CustomError(
+        CustomError customError = new CustomError(
                 LocalDateTime.now(),
                 HttpStatus.NOT_FOUND.value(),
                 "Validation error",
@@ -42,9 +41,8 @@ public class CustomHandlerException {
         );
 
         FieldError fieldError = new FieldError(customError, error);
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(fieldError);
 
-
+        return new ResponseEntity<>(fieldError,HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = { Exception.class })

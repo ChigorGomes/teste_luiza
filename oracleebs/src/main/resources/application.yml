@@ -12,3 +12,5 @@ spring:
         show_sql: true
         format_sql: true
     open-in-view: false
+queue:
+  name: response-queue-submit

@@ -1,9 +1,11 @@
 package com.tech.teste.luiza.oracleebs;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@EnableRabbit
 public class OracleebsApplication {
 
 	public static void main(String[] args) {
