@@ -13,4 +13,6 @@ spring:
         format_sql: true
     open-in-view: false
 queue:
-  name: response-queue-submit
+  name:
+    success: response-queue-success
+    error: response-queue-error

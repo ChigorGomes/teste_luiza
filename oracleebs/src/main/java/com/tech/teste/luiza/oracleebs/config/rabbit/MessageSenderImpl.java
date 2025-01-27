@@ -12,11 +12,13 @@ import java.io.IOException;
 import static com.tech.teste.luiza.oracleebs.util.HttpResponseProcessor.convertToJsonNodeResponseBody;
 
 @Component
-public class QueueSender implements MessageSender{
-    private RabbitTemplate rabbitTemplate;
+public class MessageSenderImpl implements MessageSender{
+    private final RabbitTemplate rabbitTemplate;
     private final QueueDecider queueDecider;
 
-    public QueueSender(RabbitTemplate rabbitTemplate, QueueDecider queueDecider) {
+
+
+    public MessageSenderImpl(RabbitTemplate rabbitTemplate, QueueDecider queueDecider) {
         this.rabbitTemplate = rabbitTemplate;
         this.queueDecider = queueDecider;
     }

@@ -1,6 +1,6 @@
 package com.tech.teste.luiza.oracleebs.config.filter;
 
-import com.tech.teste.luiza.oracleebs.config.rabbit.QueueSender;
+import com.tech.teste.luiza.oracleebs.config.rabbit.MessageSenderImpl;
 import com.tech.teste.luiza.oracleebs.service.LoggingServiceImpl;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -18,12 +18,13 @@ import java.io.IOException;
 public class RequestLoggingFilter implements Filter {
 
     private final LoggingServiceImpl loggingServiceImpl;
-    private final QueueSender queueSender;
+    private final MessageSenderImpl messageSender;
 
-    public RequestLoggingFilter(LoggingServiceImpl loggingServiceImpl, QueueSender queueSender) {
+    public RequestLoggingFilter(LoggingServiceImpl loggingServiceImpl, MessageSenderImpl messageSender) {
         this.loggingServiceImpl = loggingServiceImpl;
-        this.queueSender = queueSender;
+        this.messageSender = messageSender;
     }
+
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws ServletException, IOException {
@@ -32,7 +33,7 @@ public class RequestLoggingFilter implements Filter {
         ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper((HttpServletResponse) servletResponse);
         filterChain.doFilter(servletRequest, responseWrapper);
         loggingServiceImpl.createLog(httpRequest, httpResponse, responseWrapper);
-        queueSender.send(responseWrapper);
+        messageSender.send(httpRequest, httpResponse, responseWrapper);
         responseWrapper.copyBodyToResponse();
 
 

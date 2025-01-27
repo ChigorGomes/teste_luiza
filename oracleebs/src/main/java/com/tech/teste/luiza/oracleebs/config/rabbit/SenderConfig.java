@@ -12,9 +12,20 @@ import org.springframework.context.annotation.Configuration;
 public class SenderConfig {
 
 
+    @Value("${queue.name.error}")
+    private String errorQueue;
+    @Value("${queue.name.success}")
+    private String sucessQueue;
+
+
     @Bean
-    public Queue queue(@Value("${queue.name}") String queueName) {
-        return new Queue(queueName, true);
+    public Queue errorQueue() {
+        return new Queue(errorQueue, true);
+    }
+
+    @Bean
+    public Queue successQueue() {
+        return new Queue(sucessQueue, true);
     }
 
     @Bean

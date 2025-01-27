@@ -34,7 +34,7 @@ public class CustomHandlerException {
 
         CustomError customError = new CustomError(
                 LocalDateTime.now(),
-                HttpStatus.NOT_FOUND.value(),
+                HttpStatus.BAD_REQUEST.value(),
                 "Validation error",
                 request.getRequestURI(),
                 request.getMethod()
