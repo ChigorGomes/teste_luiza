@@ -1,0 +1,1 @@
+INSERT INTO tb_user (username, "password") VALUES('luizalabs', '$2b$12$4b8zjgkgin8bwDq1C1H8CO3dTXw/ml8fXvp7CSe7.cPlmL6j0wpD6');

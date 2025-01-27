@@ -11,14 +11,14 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @ControllerAdvice
 public class CustomHandlerException {
     @ExceptionHandler(NotFoundExceptionHandler.class)
     ResponseEntity<CustomError> handleNotFoundException(NotFoundExceptionHandler handler, HttpServletRequest request) {
         CustomError customError= new CustomError(
-                LocalDateTime.now(),
+                Instant.now(),
                 HttpStatus.NOT_FOUND.value(),
                 handler.getMessage(),
                 request.getRequestURI(),
@@ -33,7 +33,7 @@ public class CustomHandlerException {
                 .map(DefaultMessageSourceResolvable::getDefaultMessage).toList();
 
         CustomError customError = new CustomError(
-                LocalDateTime.now(),
+                Instant.now(),
                 HttpStatus.BAD_REQUEST.value(),
                 "Validation error",
                 request.getRequestURI(),
@@ -48,7 +48,7 @@ public class CustomHandlerException {
     @ExceptionHandler(value = { Exception.class })
     public final ResponseEntity<CustomError> handleAllExceptions(Exception ex,  HttpServletRequest request) {
         CustomError customError= new CustomError(
-                LocalDateTime.now(),
+                Instant.now(),
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
                 request.getRequestURI(),
@@ -57,4 +57,8 @@ public class CustomHandlerException {
 
         return new ResponseEntity<>(customError, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+
+
+
 }

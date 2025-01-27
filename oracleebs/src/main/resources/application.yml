@@ -16,3 +16,8 @@ queue:
   name:
     success: response-queue-success
     error: response-queue-error
+jwt:
+  private:
+    key: classpath:app.key
+  public:
+    key: classpath:app.pub

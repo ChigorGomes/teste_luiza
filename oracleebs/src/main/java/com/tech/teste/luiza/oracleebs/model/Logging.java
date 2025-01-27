@@ -18,7 +18,7 @@ public class Logging {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer status;
-    private LocalDate timestamp;
+    private LocalDateTime timestamp;
     @Column(columnDefinition = "TEXT")
     private String payload;
     private String path;
@@ -43,13 +43,7 @@ public class Logging {
         this.status = status;
     }
 
-    public LocalDate getTimestamp() {
-        return timestamp;
-    }
 
-    public void setTimestamp(LocalDate timestamp) {
-        this.timestamp = timestamp;
-    }
 
     public String getPayload() {
         return payload;
@@ -77,6 +71,6 @@ public class Logging {
 
     @PrePersist
     public void prePersist() {
-        timestamp = LocalDateTime.now().toLocalDate();
+        timestamp = LocalDateTime.now();
     }
 }
