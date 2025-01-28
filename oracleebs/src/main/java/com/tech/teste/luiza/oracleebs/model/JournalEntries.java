@@ -35,6 +35,13 @@ public class JournalEntries {
     public JournalEntries() {
     }
 
+    public JournalEntries(String journalName, LocalDate accountingDate, String currencyCode, Set<JournalLines> lines) {
+        this.journalName = journalName;
+        this.accountingDate = accountingDate;
+        this.currencyCode = currencyCode;
+        this.lines = lines;
+    }
+
     public Long getJournalId() {
         return journalId;
     }

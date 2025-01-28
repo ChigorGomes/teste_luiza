@@ -25,7 +25,8 @@ public class LoggingServiceImpl implements LoggingService {
 
     @Override
     @Transactional
-    public void createLog(HttpServletRequest request, HttpServletResponse response, ContentCachingResponseWrapper responseWrapper) throws UnsupportedEncodingException {
+    public boolean createLog(HttpServletRequest request, HttpServletResponse response, ContentCachingResponseWrapper responseWrapper) throws UnsupportedEncodingException {
+
         LoggingRequestRecord requestRecord = new LoggingRequestRecord(
                 response.getStatus(),
                 convertToStringResponseBody(responseWrapper),
@@ -35,8 +36,9 @@ public class LoggingServiceImpl implements LoggingService {
 
         var entity = loggingMapper.toEntity(requestRecord);
         logRepository.save(entity);
-    }
 
+        return true;
+    }
 
 
 }

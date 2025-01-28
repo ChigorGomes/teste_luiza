@@ -11,7 +11,7 @@ public class CurrencyCodeValidator implements ConstraintValidator<ValidCurrency,
     @Override
     public boolean isValid(String codigo, ConstraintValidatorContext constraintValidatorContext) {
         if (codigo == null) {
-            return true;
+            return false;
         }
         try {
             Currency moeda = Currency.getInstance(codigo.toUpperCase());

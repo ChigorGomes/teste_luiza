@@ -8,7 +8,7 @@ public class DoubleDecimalValidator implements ConstraintValidator <ValidDouble,
     @Override
     public boolean isValid(Double value, ConstraintValidatorContext constraintValidatorContext) {
         if (value == null || value <= 0.0) {
-            return true;
+            return false;
         }
         String valueAsString = value.toString();
         return valueAsString.matches("^\\d+(\\.\\d{1,2})?$");

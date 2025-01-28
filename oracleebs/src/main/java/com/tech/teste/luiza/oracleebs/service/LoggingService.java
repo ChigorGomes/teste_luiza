@@ -7,7 +7,7 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 import java.io.UnsupportedEncodingException;
 
 public interface LoggingService {
-    void createLog(HttpServletRequest request, HttpServletResponse response, ContentCachingResponseWrapper responseWrapper) throws UnsupportedEncodingException;
+    boolean createLog(HttpServletRequest request, HttpServletResponse response, ContentCachingResponseWrapper responseWrapper) throws UnsupportedEncodingException;
 
 
 }
