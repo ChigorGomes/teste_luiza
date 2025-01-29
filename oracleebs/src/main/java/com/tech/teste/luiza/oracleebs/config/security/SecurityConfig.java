@@ -17,18 +17,28 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.util.Arrays;
+import java.util.List;
 
 /**
- * Configuração de segurança do Spring Security.
+ * Classe responsável pela configuração de segurança da aplicação utilizando Spring Security.
  *
- * <p>Define a cadeia de filtros de segurança, configura autenticação básica,
- * suporte a JWT e a codificação de senhas utilizando BCrypt.</p>
+ * <p>Inclui as seguintes definições:</p>
+ * <ul>
+ *     <li>Configuração da cadeia de filtros de segurança.</li>
+ *     <li>Suporte a autenticação via JWT (decodificação e codificação de tokens).</li>
+ *     <li>Codificação de senhas utilizando BCrypt.</li>
+ *     <li>Configuração de CORS para permitir origens e métodos específicos.</li>
+ * </ul>
  *
- * <p>As chaves pública e privada para geração e validação dos tokens JWT são
- * carregadas de propriedades externas.</p>
+ * <p>As chaves RSA necessárias para a autenticação JWT são carregadas a partir
+ * de propriedades externas.</p>
  *
  * @author Cicero Higor Gomes
  */
@@ -42,8 +52,10 @@ public class SecurityConfig {
     private RSAPrivateKey privateKey;
 
     @Bean
-    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable)
+    SecurityFilterChain filterChain(HttpSecurity http, CorsConfigurationSource corsConfigurationSource) throws Exception {
+        http
+                .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Habilita CORS com a configuração correta
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests
                         (auth -> auth.requestMatchers("/v1/ledger/authenticate").permitAll()
                                 .anyRequest().authenticated()
@@ -69,5 +81,19 @@ public class SecurityConfig {
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("http://localhost:8080"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowCredentials(true);
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
+        configuration.setExposedHeaders(Arrays.asList("Authorization", "Content-Type"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 }

@@ -1,22 +1,27 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/oracledb
-    username: postgres
-    password: root
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
     properties:
       hibernate:
-        format_sql: true
+        format_sql: ${SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL}
     open-in-view: false
+  rabbitmq:
+    host: ${RABBIT_HOST}
+    port: ${RABBIT_PORT}
+    username: ${RABBIT_USERNAME}
+    password: ${RABBIT_PASSWORD}
 queue:
   name:
-    success: response-queue-success
-    error: response-queue-error
+    success: ${QUEUE_NAME_SUCCESS}
+    error: ${QUEUE_NAME_ERROR}
 jwt:
   private:
-    key: classpath:app.key
+    key: ${JWT_PRIVATE_KEY}
   public:
-    key: classpath:app.pub
+    key: ${JWT_PUBLIC_KEY}

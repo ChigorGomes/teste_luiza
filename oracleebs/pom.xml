@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.tech.teste.luiza</groupId>
 	<artifactId>oracleebs</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>oracleebs</name>
 	<description>Teste técnico</description>
 	<url/>
