@@ -2,6 +2,7 @@ package com.tech.teste.luiza.oracleebs.controller;
 
 import com.tech.teste.luiza.oracleebs.dto.response.AuthenticationResponseRecord;
 import com.tech.teste.luiza.oracleebs.service.AuthenticationServiceImpl;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,12 +19,14 @@ public class AuthenticationController {
     }
 
     @PostMapping()
-    public ResponseEntity<AuthenticationResponseRecord> authenticate(Authentication authentication){
-        AuthenticationResponseRecord responseRecord= authenticationServiceImpl.authenticate(authentication);
+    public ResponseEntity<AuthenticationResponseRecord> authenticate(Authentication authentication) {
+        AuthenticationResponseRecord responseRecord = authenticationServiceImpl.authenticate(authentication);
+        if (responseRecord == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
         return ResponseEntity.ok().body(responseRecord);
     }
-
-
 
 
 }

@@ -15,6 +15,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public AuthenticationResponseRecord authenticate(Authentication authentication) {
+        System.out.println(authentication);
         return new AuthenticationResponseRecord(
                 jwtService.generateToken(authentication),
                 "Bearer",

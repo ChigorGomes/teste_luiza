@@ -29,6 +29,30 @@ class DoubleDecimalValidatorTest {
         assertFalse(doubleDecimalValidator.isValid(17.789,null));
     }
 
+    @Test
+    @DisplayName("Deve retornar falso para quando enviar null")
+    void testInvalidNull(){
+        assertFalse(doubleDecimalValidator.isValid(null,null));
+    }
+
+    @Test
+    @DisplayName("Deve retornar true para quando enviar um double com uma casa decimal")
+    void testValidDecimal(){
+        assertTrue(doubleDecimalValidator.isValid(10.0,null));
+    }
+
+    @Test
+    @DisplayName("Deve retornar true para quando enviar um double negativo")
+    void testInvalidNegativeDecimal(){
+        assertTrue(doubleDecimalValidator.isValid(-10.0,null));
+    }
+
+    @Test
+    @DisplayName("Deve retornar true para quando enviar um double negativo com uma casa decimal")
+    void testInvalidNegativeDoubleDecimal(){
+        assertFalse(doubleDecimalValidator.isValid(-10.456,null));
+    }
+
 
 
 }

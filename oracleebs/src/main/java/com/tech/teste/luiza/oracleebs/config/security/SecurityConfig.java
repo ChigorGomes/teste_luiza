@@ -33,7 +33,7 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests
-                        (auth -> auth.requestMatchers("/v1/authenticate").permitAll()
+                        (auth -> auth.requestMatchers("/v1/ledger/authenticate").permitAll()
                                 .anyRequest().authenticated()
                         ).httpBasic(Customizer.withDefaults())
                 .oauth2ResourceServer(
