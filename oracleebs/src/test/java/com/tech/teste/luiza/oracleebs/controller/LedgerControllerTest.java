@@ -46,6 +46,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(LedgerController.class)
 @AutoConfigureMockMvc
 
+/**
+ * Classe de testes para o {@link LedgerController}.
+ *
+ * <p>Valida o comportamento dos endpoints de ledger, com cenários de sucesso,
+ * falhas de validação e tratamento de exceções.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 @DisplayName("Testes para AuthenticationController")
 @Import(TestSecurityConfig.class) //ignora a autenticação do spring security
 class LedgerControllerTest {

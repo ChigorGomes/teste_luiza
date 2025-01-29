@@ -14,7 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
-
+/**
+ * Controlador responsável por gerenciar operações relacionadas a Ledgers.
+ *
+ * <p>Define endpoints para criação de um novo Ledger e recuperação de um Ledger
+ * por ID, utilizando o serviço {@link LedgerServiceImpl}.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
 @RestController
 @RequestMapping("/v1/ledger")
 public class LedgerController {

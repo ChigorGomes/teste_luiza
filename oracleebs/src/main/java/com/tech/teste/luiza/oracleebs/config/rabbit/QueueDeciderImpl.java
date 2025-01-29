@@ -5,6 +5,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementação da interface {@link QueueDecider} responsável por determinar a fila RabbitMQ
+ * para onde a mensagem será enviada, baseado no método da requisição e no status da resposta HTTP.
+ *
+ * <p>Utiliza as filas de sucesso e erro, configuradas através de propriedades externas.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
 @Component
 public class QueueDeciderImpl implements QueueDecider {
     private final String errorQueue;

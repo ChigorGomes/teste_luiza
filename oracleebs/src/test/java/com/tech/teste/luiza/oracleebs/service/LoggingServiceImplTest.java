@@ -24,6 +24,15 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * Classe de testes para o {@link LoggingServiceImpl}.
+ *
+ * <p>Valida a criação e o armazenamento de logs de requisições, garantindo
+ * que os dados sejam processados e persistidos corretamente.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Testes para LoggingServiceImpl")
 class LoggingServiceImplTest {

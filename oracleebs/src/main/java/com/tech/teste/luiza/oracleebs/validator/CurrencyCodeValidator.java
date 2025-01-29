@@ -5,6 +5,13 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
 import java.util.Currency;
+/**
+ * Validador para a annotation {@link ValidCurrency}.
+ *
+ * <p>Verifica se um código de moeda fornecido é válido, utilizando a classe {@link Currency}.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
 
 public class CurrencyCodeValidator implements ConstraintValidator<ValidCurrency, String> {
 

@@ -14,7 +14,25 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.time.Instant;
-
+/**
+ * Manipulador global de exceções para a aplicação.
+ *
+ * <p>Esta classe utiliza a anotação {@code @ControllerAdvice} para capturar e tratar diferentes
+ * tipos de exceções, proporcionando respostas detalhadas aos erros em formato consistente.</p>
+ *
+ * <p>Inclui tratadores específicos para exceções como:
+ * <ul>
+ *   <li>{@link NotFoundExceptionHandler}</li>
+ *   <li>{@link MethodArgumentNotValidException}</li>
+ *   <li>{@link IllegalArgumentException}</li>
+ *   <li>{@link HttpRequestMethodNotSupportedException}</li>
+ *   <li>{@link NoResourceFoundException}</li>
+ *   <li>Outras exceções genéricas.</li>
+ * </ul>
+ * </p>
+ *
+ * @author Cicero Higor Gomes
+ */
 @ControllerAdvice
 public class CustomHandlerException {
     @ExceptionHandler(NotFoundExceptionHandler.class)

@@ -12,6 +12,13 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 import java.io.UnsupportedEncodingException;
 
 import static com.tech.teste.luiza.oracleebs.util.HttpResponseProcessor.convertToStringResponseBody;
+/**
+ * Implementação do serviço de logging de requisições e respostas HTTP.
+ *
+ * <p>Responsável por criar e salvar registros de logs com base nas informações de requisições e respostas processadas.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
 
 @Service
 public class LoggingServiceImpl implements LoggingService {

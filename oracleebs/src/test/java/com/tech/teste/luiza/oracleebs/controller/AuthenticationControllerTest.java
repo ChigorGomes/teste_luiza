@@ -35,6 +35,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Classe de testes para o {@link AuthenticationController}.
+ *
+ * <p>Testa os endpoints relacionados à autenticação, verificando o comportamento esperado em cenários
+ * de sucesso e falha.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 @ExtendWith(MockitoExtension.class)
 @WebMvcTest(AuthenticationController.class)
 @AutoConfigureMockMvc

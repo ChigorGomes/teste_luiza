@@ -8,6 +8,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Classe de testes para o {@link DoubleDecimalValidator}.
+ *
+ * <p>Verifica a validação de valores decimais, incluindo casos válidos, inválidos, nulos
+ * e números negativos.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Testes para DoubleDecimalValidator")
 class DoubleDecimalValidatorTest {

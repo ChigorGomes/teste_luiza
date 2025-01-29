@@ -11,6 +11,25 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+/**
+ * Representa a entidade de registro de logs no sistema.
+ *
+ * <p>Esta classe é mapeada para a tabela {@code tb_log} no banco de dados,
+ * armazenando informações relacionadas a requisições e respostas, como status,
+ * payload, caminho, método HTTP e o timestamp.</p>
+ *
+ * <ul>
+ *   <li>{@code id}: Identificador único do log.</li>
+ *   <li>{@code status}: Código de status HTTP associado à requisição/resposta.</li>
+ *   <li>{@code timestamp}: Data e hora da criação do log, gerada automaticamente.</li>
+ *   <li>{@code payload}: Corpo da requisição/resposta armazenado como texto.</li>
+ *   <li>{@code path}: Caminho HTTP acessado.</li>
+ *   <li>{@code method}: Método HTTP utilizado (e.g., GET, POST).</li>
+ * </ul>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 @Entity
 @Table(name = "tb_log")
 public class Logging {

@@ -6,6 +6,24 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Representa a entidade de linhas do diário contábil (Journal Lines) no sistema.
+ *
+ * <p>Esta classe é mapeada para a tabela {@code tb_journal_lines} no banco de dados,
+ * armazenando as informações de cada linha associada a um diário contábil.</p>
+ *
+ * <ul>
+ *   <li>{@code lineId}: Identificador único da linha.</li>
+ *   <li>{@code accountCode}: Código da conta contábil.</li>
+ *   <li>{@code debit}: Valor de débito na linha.</li>
+ *   <li>{@code credit}: Valor de crédito na linha.</li>
+ *   <li>{@code costCenter}: Centro de custo associado à linha.</li>
+ *   <li>{@code description}: Descrição da linha.</li>
+ * </ul>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 @Entity
 @Table(name = "tb_journal_lines")
 public class JournalLines {

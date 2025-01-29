@@ -17,6 +17,25 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+/**
+ * Representa a entidade de diário contábil (Journal Entries) no sistema.
+ *
+ * <p>Esta classe é mapeada para a tabela {@code tb_journal_entries} no banco de dados,
+ * armazenando informações como nome do diário, data contábil, moeda e suas respectivas linhas
+ * associadas.</p>
+ *
+ * <ul>
+ *   <li>{@code journalId}: Identificador único do diário.</li>
+ *   <li>{@code journalName}: Nome do diário contábil.</li>
+ *   <li>{@code accountingDate}: Data associada à contabilização.</li>
+ *   <li>{@code currencyCode}: Código da moeda associada.</li>
+ *   <li>{@code lines}: Linhas do diário contábil, mapeadas com Cascade e Fetch EAGER.</li>
+ * </ul>
+ *
+ * <p>Inclui funcionalidade de persistência para definir automaticamente a data contábil antes da inserção no banco.</p>
+ *
+ * @author  Cicero Higor Gomes
+ */
 @Entity
 @Table(name = "tb_journal_entries")
 public class JournalEntries {

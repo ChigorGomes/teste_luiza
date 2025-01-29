@@ -6,6 +6,14 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+/**
+ * Utilitário para processar respostas HTTP.
+ *
+ * <p>Fornece métodos para converter o corpo da resposta em diferentes formatos,
+ * como JSON e String.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
 
 public class HttpResponseProcessor {
 

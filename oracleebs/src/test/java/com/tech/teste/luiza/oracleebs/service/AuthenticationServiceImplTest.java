@@ -15,6 +15,15 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * Classe de testes para o {@link AuthenticationServiceImpl}.
+ *
+ * <p>Valida o comportamento da autenticação, verificando se o token JWT é gerado corretamente
+ * e os dados esperados são retornados.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Testes para AuthenticationServiceImpl")
 class AuthenticationServiceImplTest {

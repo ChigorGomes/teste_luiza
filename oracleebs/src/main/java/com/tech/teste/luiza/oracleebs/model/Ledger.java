@@ -11,6 +11,22 @@ import jakarta.persistence.Table;
 
 import java.util.UUID;
 
+/**
+ * Representa a entidade de razão contábil (Ledger) no sistema.
+ *
+ * <p>Esta classe é mapeada para a tabela {@code tb_ledger} no banco de dados
+ * e mantém informações relacionadas a uma transação contábil, como descrição
+ * e associação com entradas de diário contábil ({@link JournalEntries}).</p>
+ *
+ * <ul>
+ *   <li>{@code transcationId}: Identificador único da transação, gerado como um UUID.</li>
+ *   <li>{@code description}: Descrição da transação contábil.</li>
+ *   <li>{@code journalEntries}: Referência à entidade {@link JournalEntries}, associada via relacionamento {@code OneToOne}.</li>
+ * </ul>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 @Entity
 @Table(name = "tb_ledger")
 public class Ledger {

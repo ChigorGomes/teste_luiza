@@ -21,6 +21,18 @@ import org.springframework.security.web.SecurityFilterChain;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
+/**
+ * Configuração de segurança do Spring Security.
+ *
+ * <p>Define a cadeia de filtros de segurança, configura autenticação básica,
+ * suporte a JWT e a codificação de senhas utilizando BCrypt.</p>
+ *
+ * <p>As chaves pública e privada para geração e validação dos tokens JWT são
+ * carregadas de propriedades externas.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {

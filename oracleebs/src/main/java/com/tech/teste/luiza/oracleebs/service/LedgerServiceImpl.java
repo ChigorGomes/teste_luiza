@@ -10,6 +10,13 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
+/**
+ * Implementação do serviço de operações relacionadas a Ledgers.
+ *
+ * <p>Gerencia a criação de novos Ledgers e a busca de Ledgers por ID.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
 
 @Service
 public class LedgerServiceImpl implements LedgerService {

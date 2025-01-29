@@ -6,8 +6,17 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
-@TestConfiguration
 
+/**
+ * Configuração de segurança para testes.
+ *
+ * <p>Define uma configuração simplificada de segurança desabilitando o CSRF
+ * e permitindo todas as requisições sem autenticação.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
+
+@TestConfiguration
 public class TestSecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

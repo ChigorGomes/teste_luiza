@@ -8,6 +8,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Classe de testes para o {@link CurrencyCodeValidator}.
+ *
+ * <p>Valida os casos de uso para verificar a conformidade de códigos de moeda,
+ * incluindo códigos válidos, inválidos, vazios e nulos.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Testes para CurrencyCodeValidator")
 class CurrencyCodeValidatorTest {

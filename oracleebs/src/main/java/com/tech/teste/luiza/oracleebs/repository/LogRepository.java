@@ -1,10 +1,15 @@
 package com.tech.teste.luiza.oracleebs.repository;
 
 import com.tech.teste.luiza.oracleebs.model.Logging;
-import com.tech.teste.luiza.oracleebs.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+/**
+ * Repositório para gerenciar a persistência da entidade {@link Logging}.
+ *
+ * <p>Fornece métodos padrão para operações CRUD através da extensão de {@link JpaRepository}.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
 
 public interface LogRepository extends JpaRepository<Logging, Long> {
 

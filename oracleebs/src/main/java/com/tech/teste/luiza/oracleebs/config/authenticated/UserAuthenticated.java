@@ -7,6 +7,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Classe que representa um usuário autenticado no contexto do Spring Security.
+ * Implementa a interface {@link UserDetails} para fornecer informações
+ * do usuário ao sistema de autenticação.
+ *
+ * <p>Esta classe encapsula um objeto {@link User} e expõe suas informações,
+ * como username e password. Além disso, os métodos relacionados ao estado
+ * da conta do usuário retornam valores padrão (verdadeiros).</p>
+ *
+ * <p>Os métodos de autorização retornam uma coleção vazia de {@link GrantedAuthority},
+ * já que esta classe não adiciona permissões específicas.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 public class UserAuthenticated implements UserDetails {
     private final User user;
 

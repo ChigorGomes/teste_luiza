@@ -21,6 +21,16 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
+/**
+ * Classe de testes para o {@link UserDetailsServiceImpl}.
+ *
+ * <p>Valida o carregamento de detalhes do usuário com base no username, garantindo o
+ * retorno correto de um {@link org.springframework.security.core.userdetails.UserDetails}
+ * ou o lançamento de exceções em casos de usuário não encontrado.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Testes para UserDetailsServiceImpl")
 class UserDetailsServiceImplTest {

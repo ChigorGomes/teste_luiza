@@ -10,6 +10,13 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.stream.Collectors;
 
+/**
+ * Implementação do serviço de geração de tokens JWT.
+ *
+ * <p>Responsável por criar tokens JWT com base nas informações de autenticação.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
 @Service
 public class JwtServiceImpl  implements JwtService{
     private final JwtEncoder encoder;

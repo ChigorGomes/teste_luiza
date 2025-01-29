@@ -11,6 +11,15 @@ import java.io.IOException;
 
 import static com.tech.teste.luiza.oracleebs.util.HttpResponseProcessor.convertToJsonNodeResponseBody;
 
+/**
+ * Implementação da interface {@link MessageSender} responsável por enviar mensagens
+ * para a fila RabbitMQ com base nos dados da requisição e resposta HTTP.
+ *
+ * <p>Esta classe utiliza o {@link RabbitTemplate} para enviar as mensagens
+ * e o {@link QueueDecider} para determinar a fila apropriada para cada requisição.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
 @Component
 public class MessageSenderImpl implements MessageSender{
     private final RabbitTemplate rabbitTemplate;

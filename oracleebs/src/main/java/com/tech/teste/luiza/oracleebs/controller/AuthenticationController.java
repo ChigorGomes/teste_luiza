@@ -9,6 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controlador responsável por gerenciar solicitações de autenticação.
+ *
+ * <p>Define o endpoint para autenticar usuários e retornar as informações
+ * de autenticação, utilizando o serviço {@link AuthenticationServiceImpl}.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
 @RestController
 @RequestMapping("/v1/ledger/authenticate")
 public class AuthenticationController {

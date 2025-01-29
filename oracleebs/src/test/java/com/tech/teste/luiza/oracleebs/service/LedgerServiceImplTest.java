@@ -29,6 +29,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
+/**
+ * Classe de testes para o {@link LedgerServiceImpl}.
+ *
+ * <p>Valida a criação, busca e manipulação de dados de ledger, garantindo o comportamento esperado
+ * e o tratamento de exceções.</p>
+ *
+ * @author Cicero Higor Gomes
+ */
+
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Testes para LedgerServiceImpl")
 class LedgerServiceImplTest {

@@ -1,0 +1,17 @@
+com.tech.teste.luiza.oracleebs
+com.tech.teste.luiza.oracleebs.config.authenticated
+com.tech.teste.luiza.oracleebs.config.filter
+com.tech.teste.luiza.oracleebs.config.rabbit
+com.tech.teste.luiza.oracleebs.config.security
+com.tech.teste.luiza.oracleebs.controller
+com.tech.teste.luiza.oracleebs.dto.request
+com.tech.teste.luiza.oracleebs.dto.response
+com.tech.teste.luiza.oracleebs.exception
+com.tech.teste.luiza.oracleebs.handler
+com.tech.teste.luiza.oracleebs.mapstruct
+com.tech.teste.luiza.oracleebs.model
+com.tech.teste.luiza.oracleebs.repository
+com.tech.teste.luiza.oracleebs.service
+com.tech.teste.luiza.oracleebs.util
+com.tech.teste.luiza.oracleebs.validator
+com.tech.teste.luiza.oracleebs.validator.annotation
