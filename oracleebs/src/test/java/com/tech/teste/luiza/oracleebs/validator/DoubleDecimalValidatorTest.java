@@ -22,17 +22,13 @@ class DoubleDecimalValidatorTest {
         assertTrue(doubleDecimalValidator.isValid(1.0,null));
     }
 
+
     @Test
     @DisplayName("Deve retornar falso para um valor decimal inválido com mais de duas casas decimais")
     void testInvalidDoubleDecimal(){
         assertFalse(doubleDecimalValidator.isValid(17.789,null));
     }
 
-    @Test
-    @DisplayName("Deve retornar falso para o valor decimal zero (0.0)")
-    void testInvalidDoubleDecimalZero(){
-        assertFalse(doubleDecimalValidator.isValid(0.0,null));
-    }
 
 
 }

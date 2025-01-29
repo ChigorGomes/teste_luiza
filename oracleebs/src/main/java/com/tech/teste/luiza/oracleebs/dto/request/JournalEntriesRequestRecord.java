@@ -7,10 +7,10 @@ import jakarta.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.Set;
 
-public record JournalEntriesRequestRecord(@NotEmpty(message = "journal name cannot be null or empty") String journalName,
+public record JournalEntriesRequestRecord(@NotEmpty(message = "journalName cannot be null or empty") String journalName,
                                           LocalDate accountingDate,
                                           @ValidCurrency()
-                                          @NotEmpty(message = "currencyCode name cannot be null or empty")
+                                          @NotEmpty(message = "currencyCode cannot be null or empty")
                                           String currencyCode ,
                                           @Valid Set<LinesRequestRecord> lines) {
 }

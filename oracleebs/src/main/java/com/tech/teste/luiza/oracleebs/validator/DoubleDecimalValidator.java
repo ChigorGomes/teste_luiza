@@ -7,10 +7,10 @@ import jakarta.validation.ConstraintValidatorContext;
 public class DoubleDecimalValidator implements ConstraintValidator <ValidDouble, Double>{
     @Override
     public boolean isValid(Double value, ConstraintValidatorContext constraintValidatorContext) {
-        if (value == null || value <= 0.0) {
+        if (value == null) {
             return false;
         }
         String valueAsString = value.toString();
-        return valueAsString.matches("^\\d+(\\.\\d{1,2})?$");
+        return valueAsString.matches("^-?\\d+(\\.\\d{1,2})?$");
     }
 }

@@ -7,9 +7,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.time.Instant;
 
@@ -17,7 +19,7 @@ import java.time.Instant;
 public class CustomHandlerException {
     @ExceptionHandler(NotFoundExceptionHandler.class)
     ResponseEntity<CustomError> handleNotFoundException(NotFoundExceptionHandler handler, HttpServletRequest request) {
-        CustomError customError= new CustomError(
+        CustomError customError = new CustomError(
                 Instant.now(),
                 HttpStatus.NOT_FOUND.value(),
                 handler.getMessage(),
@@ -42,12 +44,40 @@ public class CustomHandlerException {
 
         FieldError fieldError = new FieldError(customError, error);
 
-        return new ResponseEntity<>(fieldError,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(fieldError, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(value = { Exception.class })
-    public final ResponseEntity<CustomError> handleAllExceptions(Exception ex,  HttpServletRequest request) {
-        CustomError customError= new CustomError(
+
+    @ExceptionHandler(value = {IllegalArgumentException.class})
+    public final ResponseEntity<CustomError> handleIllegalArgumentException(IllegalArgumentException ex, HttpServletRequest request) {
+        CustomError customError = new CustomError(
+                Instant.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                request.getMethod()
+        );
+
+        return new ResponseEntity<>(customError, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    ResponseEntity<CustomError> handleMethodHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException ex, HttpServletRequest request) {
+        CustomError customError = new CustomError(
+                Instant.now(),
+                HttpStatus.METHOD_NOT_ALLOWED.value(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                request.getMethod()
+        );
+
+
+        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(customError);
+    }
+
+    @ExceptionHandler(value = {NoResourceFoundException.class})
+    public final ResponseEntity<CustomError> handleNoResourceFoundException(NoResourceFoundException ex, HttpServletRequest request) {
+        CustomError customError = new CustomError(
                 Instant.now(),
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
@@ -55,10 +85,21 @@ public class CustomHandlerException {
                 request.getMethod()
         );
 
-        return new ResponseEntity<>(customError, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(customError, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(value = {Exception.class})
+    public final ResponseEntity<CustomError> handleAllExceptions(Exception ex, HttpServletRequest request) {
+        CustomError customError = new CustomError(
+                Instant.now(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                request.getMethod()
+        );
 
+        return new ResponseEntity<>(customError, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
 
 }
