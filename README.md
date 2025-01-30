@@ -2,10 +2,10 @@
 
 Este projeto é uma API de integração desenvolvida como parte de um teste técnico para a **Magalu**. A API simula uma plataforma de integração contábil que recebe requisições contendo dados a serem contabilizados no sistema **Oracle EBS**.
 
-Segue documentação: https://github.com/ChigorGomes/teste_luiza/wiki 
+Documentação: https://github.com/ChigorGomes/teste_luiza/wiki 
 
+Collection: https://github.com/ChigorGomes/teste_luiza/blob/main/oracleebs/collection/collection.json 
 
-Collections: https://github.com/ChigorGomes/teste_luiza/blob/main/oracleebs/collection/collection.json 
 ---
 
 ## 📝 Requisitos do Teste Técnico
