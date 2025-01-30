@@ -45,53 +45,120 @@ Exemplo de configuração no `application.yml`:
 ```yaml
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/oracledb
-    username: postgres
-    password: root
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
     properties:
       hibernate:
-        format_sql: true
+        format_sql: ${SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL}
     open-in-view: false
+  rabbitmq:
+    host: ${RABBIT_HOST}
+    port: ${RABBIT_PORT}
+    username: ${RABBIT_USERNAME}
+    password: ${RABBIT_PASSWORD}
 queue:
   name:
-    success: response-queue-success
-    error: response-queue-error
+    success: ${QUEUE_NAME_SUCCESS}
+    error: ${QUEUE_NAME_ERROR}
 jwt:
   private:
-    key: classpath:app.key
+    key: ${JWT_PRIVATE_KEY}
   public:
-    key: classpath:app.pub
+    key: ${JWT_PUBLIC_KEY
 ```
 ## 🚀 Como Executar
 
+1. **Compilar o projeto**:
+   Navegue até a pasta `oracleebs` e execute o Maven para gerar o pacote JAR:
 
-## 🗂️ Estrutura do Projeto
+   ```bash
+   cd oracleebs
+   mvn clean package
+
+2. **Subir os containers Docker**:
+  Após compilar o JAR, execute o comando abaixo para construir e rodar os containers:
 
 
+ ```bash
+     docker-compose up --build
+```
+
+3. **Acessar a aplicação**:
+   
+- **Aplicação Spring Boot**: Acesse em http://localhost:9080.
+- **RabbitMQ**: Acesse o painel em http://localhost:15672 (usuário: `guest`, senha: `guest`).
+- **PostgreSQL**: Acesse em `localhost:5432` com usuário `postgres` e senha `root`.
+   
 ## 📦 Docker Compose
 
 O arquivo `docker-compose.yml` configura o banco de dados PostgreSQL e o RabbitMQ:
 
 ```yaml
+version: '3.8'
+
 services:
+  app:
+    build: .
+    container_name: springboot_app
+    depends_on:
+      - db
+      - rabbitmq
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/oracledb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: none
+      SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"
+      QUEUE_NAME_SUCCESS: response-queue-success
+      QUEUE_NAME_ERROR: response-queue-error
+      JWT_PRIVATE_KEY: classpath:app.key
+      JWT_PUBLIC_KEY: classpath:app.pub
+      RABBIT_HOST: rabbitmq
+      RABBIT_PORT: 5672
+      RABBIT_USERNAME: guest
+      RABBIT_PASSWORD: guest
+    ports:
+      - "9080:8080"
+    restart: always
+    networks:
+      - app_network
+
   db:
     image: postgres:15
-    restart: always
+    container_name: postgres_db
     environment:
+      POSTGRES_DB: oracledb
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: oracledb
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
   rabbitmq:
-      image: rabbitmq:management
-      ports:
-        - 15672:15672
-        - 5672:5672
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+
+volumes:
+  postgres_data:
 ```
 
 ## 🌟 Funcionalidades
